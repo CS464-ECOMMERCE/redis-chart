@@ -325,11 +325,11 @@ master:
   ##
   resources:
     requests:
-      cpu: 2
+      cpu: 200m
       memory: 512Mi
     limits:
-      cpu: 3
-      memory: 1024Mi
+      cpu: 500m
+      memory: 1Gi
   ## Configure Pods Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
   ## @param master.podSecurityContext.enabled Enabled Redis&reg; master pods' Security Context
@@ -814,7 +814,13 @@ replica:
   ##     cpu: 3
   ##     memory: 1024Mi
   ##
-  resources: {}
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
   ## Configure Pods Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
   ## @param replica.podSecurityContext.enabled Enabled Redis&reg; replicas pods' Security Context
@@ -1128,7 +1134,7 @@ replica:
     minReplicas: 1
     ## @param replica.autoscaling.maxReplicas Maximum replicas for the pod autoscaling
     ##
-    maxReplicas: 11
+    maxReplicas: 2
     ## @param replica.autoscaling.targetCPU Percentage of CPU to consider when autoscaling
     ##
     targetCPU: ""
